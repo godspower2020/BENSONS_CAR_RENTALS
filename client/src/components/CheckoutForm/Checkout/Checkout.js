@@ -42,14 +42,13 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         <>
             <div>
                 <Typography variant="subtitle1" style={{ color: 'green' }}>
-                    Thank you for renting, {order.customer.firstname} {order.customer.lastname}
+                    Thank you for renting, {order.customer.firstname}. 
+                    <Typography style={{  fontFamily: 'italic', color: 'green' }} variant="subtitle2">Order ref: {order.customer_reference}</Typography>
                 </Typography>
                     <Divider className={classes.divider} />
-                {/* <Typography variant="subtitle1" style={{ color: 'green' }}>
-                    Pickup Date {order.customer.firstname} {order.customer.lastname}
-                </Typography> */}
-                    <Divider className={classes.divider} />
-                <Typography style={{  fontFamily: 'italic', color: 'green' }} variant="subtitle2">Order ref: {order.customer_reference}</Typography>
+                <Typography variant="subtitle1">
+                    we sent an email to <span style={{ color: 'blue'}}>{order.customer.email}</span> with your full receipt, please check spam if the email has not arrived within 5 minutes
+                </Typography>
             </div>
             <br />
             <Button style={{  textTransform: 'lowercase' }} component={Link} to="/cars" variant="outlined" color="primary" type="button">

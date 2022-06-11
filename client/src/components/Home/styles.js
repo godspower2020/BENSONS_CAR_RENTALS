@@ -19,6 +19,14 @@ export default makeStyles((theme) => ({
   grid2: {
     padding: theme.spacing(4, 0),
   },
+  shiftLeft: {
+    position: 'relative',
+    left: '-80px',
+  },
+  shiftLeftMore: {
+    position: 'relative',
+    left: '-95px',
+  },
   lostImg: {
     padding: theme.spacing(1, 0),
     // marginRight: theme.spacing(6),
@@ -72,11 +80,45 @@ export default makeStyles((theme) => ({
     display: "flex", 
     justifyContent: "space-between",
   },
+  containerMargin: {
+    margin: theme.spacing(3, 0, 3, 0),
+  },
+  padding:{
+    padding: theme.spacing(8)
+  },
+  imagePadding:{
+    padding: theme.spacing(2, 3)
+  },
   flexStart: {
     display: "flex", 
     justifyContent: "flex-start",
   },
   lowercase: {
     textTransform: 'lowercase',
+  },
+  darkBlue: {
+    color: '#29376d'
+  },
+  lightBlue: {
+    color: '#4895ff'
+  },
+  green: {
+    color: '#3bb54a'
+  },
+  yellow: {
+    color: '#f6b545'
+  },
+  fontSize24: {
+    fontSize: '30px',
+    fontWeight: '500',
+  },
+  grayColor: {
+    color: '#0000008A',
+  
   }
 }));
+
+// 29376d dark blue
+// #4895ff light blue
+// 3bb54a green
+// f6b545 yellow

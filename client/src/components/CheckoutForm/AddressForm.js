@@ -8,6 +8,7 @@ import { commerce } from '../../lib/commerce';
 import FormInput from './FormInput';
 
 const AddressForm = ({ checkoutToken, next }) => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [shippingCountries, setShippingCountries] = useState([])
     const [shippingCountry, setShippingCountry] = useState('')
     const [shippingSubdivisions, setShippingSubdivisions] = useState([])
@@ -15,19 +16,19 @@ const AddressForm = ({ checkoutToken, next }) => {
     const [shippingOptions, setShippingOptions] = useState([])
     const [shippingOption, setShippingOption] = useState('')
     const methods = useForm();
+    console.log(user)
 
     const countries = Object.entries(shippingCountries).map(([code, name]) => ({ id: code, label: name }));
-    console.log(countries);
 
     const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => ({ id: code, label: name }));
 
-    const options = shippingOptions.map((sO) => ({ id: sO.id, label: `${sO.description} - (${sO.price.formatted_with_symbol})` }))
+    const options = shippingOptions.map((sO) => ({ id: sO.id, label: `(${sO.price.formatted_with_symbol})` }))
 
     const fetchShippingCountries = async (checkoutTokenId) => {
         const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
 
         setShippingCountries(countries);
-        setShippingCountry(Object.keys(countries)[5]);
+        setShippingCountry(Object.keys(countries)[0]);
     }
 
     const fetchShippingSubdivisions = async (countryCode) => {
@@ -65,7 +66,7 @@ const AddressForm = ({ checkoutToken, next }) => {
                         <FormInput name='firstName' label='First name' />
                         <FormInput name='LastName' label='Last name' />
                         <FormInput name='address1' label='Address' />
-                        <FormInput name='email' label='Email' />
+                        <FormInput name='email' label='Email' value={user.result.email} />
                         <FormInput name='City' label='City' />
                         <FormInput name='zip' label='Zip / Postal code' />
                         {/* <DatePicker /> */}
